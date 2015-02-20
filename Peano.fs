@@ -1,3 +1,6 @@
+/* Addition, subtraction and multiplication for numbers Peano
+Author: Kudryashova Anna */
+
 type Peano = Zero | S of Peano
 let rec plus a b =
   match a with
