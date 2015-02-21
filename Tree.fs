@@ -1,3 +1,6 @@
+(* binary search tree
+ Author: Kudryashova Anna *)
+
 type Trees = EmptyTree | Tree of int * Trees * Trees
 let  rec insert e t =
   match e, t with
