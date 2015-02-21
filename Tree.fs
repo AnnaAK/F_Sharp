@@ -32,19 +32,6 @@ let rec remove e t =
     | lc, rc -> if lc = EmptyTree then Tree(FindR rc, lc, remove (FindR rc) rc)
                 else Tree(FindL lc, remove (FindL lc) lc, rc)
                 
-let rec remove2 e t =
-  match t with
-  |EmptyTree -> EmptyTree
-  |Tree (p, lc, rc) ->
-  if e > p then Tree(p, lc, remove e rc)
-  else if e < p then Tree(p, remove e lc, rc)
-  else  if (lc = EmptyTree) && (rc = EmptyTree) then EmptyTree
-  else if (lc = EmptyTree) then rc
-  else if (rc = EmptyTree) then lc
-  else match lc, rc with
-    | lc, rc -> if lc = EmptyTree then Tree(FindR rc, lc, remove (FindR rc) rc)
-                                       else Tree(FindL lc, remove (FindL lc) lc, rc)
-    
 let rec LCR t =
   match t with
   | EmptyTree -> printf ""
