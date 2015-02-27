@@ -31,12 +31,13 @@ let rec remove e t =
   if e > p then Tree(p, lc, remove e rc)
   else if e < p then Tree(p, remove e lc, rc)
   else  match lc, rc with
-    | EmptyTree, EmptyTree -> EmptyTree
-    | lc, EmptyTree -> lc
-    | EmptyTree, rc -> rc
-    | lc, rc -> if lc = EmptyTree then Tree(FindR rc, lc, remove (FindR rc) rc)
-                else Tree(FindL lc, remove (FindL lc) lc, rc)
+        |EmptyTree, EmptyTree -> EmptyTree
+        | lc, EmptyTree -> lc
+        | EmptyTree, rc -> rc
+        | lc, rc -> if lc = EmptyTree then Tree(FindR rc, lc, remove (FindR rc) rc)
+                    else Tree(FindL lc, remove (FindL lc) lc, rc)
                 
+    
 let rec LCR t =
   match t with
   | EmptyTree -> printf ""
