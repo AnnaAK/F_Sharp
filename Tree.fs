@@ -1,5 +1,7 @@
 (* binary search tree
- Author: Kudryashova Anna *)
+ Author: Kudryashova Anna
+ Expected time: 4 hours
+ Real time: 5,5 hours *)
 
 type Trees = EmptyTree | Tree of int * Trees * Trees
 let  rec insert e t =
@@ -59,15 +61,31 @@ let rec CLR t =
    
 [<EntryPoint>]
 let main args =
-  let  tr = insert 8 EmptyTree
-  let tr = insert 3 tr
+  let  tr = Tree(9, EmptyTree, EmptyTree)
+  printf "\n"
+  let tr = insert 7 tr
+  printf "insert 7: %A\n" tr
+  let tr = insert 8 tr
+  printf "insert 8: %A\n" tr
   let tr = insert 10 tr
-  let tr = insert 4 tr
-  let tr = remove 4 tr
+  printf "insert 10: %A\n" tr
+  let tr = insert 5 tr
+  printf "insert 5: %A\n" tr
+  let tr = insert 3 tr
+  printf "insert 3: %A\n" tr
+  let tr = remove 10 tr
+  printf "remove 10: %A\n" tr
+  let tr = remove 7 tr
+  printf "remove 7: %A\n" tr
+  let tr = remove 3 tr
+  printf "remove 3: %A\n" tr
+  printf "LCR: "
   LCR tr
   printf "\n"
+  printf "LRC: "
   LRC tr
   printf "\n"
+  printf "CLR: "
   CLR tr
   printf "\n"
   0
