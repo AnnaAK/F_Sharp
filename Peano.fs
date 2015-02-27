@@ -1,5 +1,7 @@
 (* Addition, subtraction, multiplication and involution for numbers Peano
-Author: Kudryashova Anna *)
+Author: Kudryashova Anna 
+expected time: 2 hours
+real time: 2,5 hours *)
 
 type Peano = Zero | S of Peano
 let rec plus a b =
@@ -17,7 +19,6 @@ let rec toString a =
   | S a -> 1 + (toString a)
 let rec multi a b =
   match a, b with
-  | Zero, Zero -> Zero
   | _, Zero -> Zero
   | Zero, _ -> Zero
   | a, S b -> plus (multi a b) a
