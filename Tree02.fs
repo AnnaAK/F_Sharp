@@ -1,9 +1,9 @@
 module Tree02
 
-(* Exercise 14 - 19 from homework dated March 2
+(* Exercise 14 - 17 from homework dated March 2
 Author : Kudryashova Anna
 Expected time: 4 hours
-Real time:   hours *)
+Real time:  8 hours *)
 
 type Trees<'A> = Empty | Tree of 'A * Trees<'A> * Trees<'A>
  
@@ -24,6 +24,12 @@ let rec map f t =
 
 let mapTree t = map (fun i -> i + 2.0) t
 
+let rec fold f a t =
+  match t with
+  | Empty -> a
+  | Tree (p, lc, rc) -> fold f (fold f (f a p) lc) rc
+  
+let sumTree t = fold (fun acc x -> acc + x) 0.0 t
 
 
 [<EntryPoint>]
@@ -37,6 +43,7 @@ let main args =
   let tr = insert 3.1 tr
   printf "original tree %A\n" tr
   printf "maping tree (i + 2): %A\n" (mapTree tr)
+  printf "sum tree : %A\n" (sumTree tr)
   printf "\n"
   
   0
