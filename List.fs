@@ -9,10 +9,10 @@ val it : (('a -> unit) -> 'a list -> unit) = <fun:clo@3> *)
 
 let Reverse list = List.fold (fun acc i -> i :: acc) [] list
 
-let filter f l = List.fold (fun acc x -> if f x then x :: acc else acc) [] l 
+let filter f l = List.foldBack(fun acc x -> if f acc then acc :: x else x) l []
 let filterF list = filter (fun i -> i < 8) list
 
-let map f l = List.fold (fun acc x ->   f x :: acc) [] l
+let map f l = List.foldBack(fun acc x ->   f acc :: x) l []
 let mapF l = map (fun i -> i + 2) l
 
 let Gorner l i = List.fold(fun acc x -> acc * i + x) 0 l
@@ -27,8 +27,7 @@ let main args =
   printf "i < 8\n"
   printf "filter: %A\n" (filterF l)
   printf "i + 2\n"
-  let l = mapF l
-  printf "map: %A\n" (Reverse l)
+  printf "map: %A\n" (mapF l)
   let l = [4; 3; 2]
   printf "были введены коэфициенты (начиная со старшего) %A\n" l
   printf "значение переменной: 2\n"
