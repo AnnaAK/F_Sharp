@@ -15,6 +15,54 @@ let  rec insert e t =
   if e > p then Tree(p, lc, insert e rc)
   else if e < p then Tree (p, insert e lc, rc)
   else t
+  
+let rec FindR t =
+  match t with
+  | EmptyTree -> 0
+  | Tree (p, EmptyTree, rc) -> p
+  | Tree (p, lc, rc) -> FindR lc
+  
+let rec FindL t =
+  match t with
+  | EmptyTree -> 0
+  | Tree (p, lc, EmptyTree) -> p
+  | Tree (p, lc, rc) -> FindL rc
+  
+let rec remove e t =
+  match t with
+  |EmptyTree -> EmptyTree
+  |Tree (p, lc, rc) ->
+  if e > p then Tree(p, lc, remove e rc)
+  else if e < p then Tree(p, remove e lc, rc)
+  else  match lc, rc with
+        |EmptyTree, EmptyTree -> EmptyTree
+        | lc, EmptyTree -> lc
+        | EmptyTree, rc -> rc
+        | lc, rc -> if lc = EmptyTree then Tree(FindR rc, lc, remove (FindR rc) rc)
+                    else Tree(FindL lc, remove (FindL lc) lc, rc)
+                
+    
+let rec LCR t =
+  match t with
+  | EmptyTree -> printf ""
+  | Tree (p, lc, rc) -> LCR lc
+                        printf  "%d, " p
+                        LCR rc
+                        
+let rec LRC t =
+  match t with
+  | EmptyTree -> printf ""
+  | Tree (p, lc, rc) -> LRC lc
+                        LRC rc
+                        printf  "%d, " p
+                        
+let rec CLR t =
+  match t with
+  | EmptyTree -> printf ""
+  | Tree (p, lc, rc) -> printf  "%d, " p
+                        CLR lc
+                        CLR rc
+              
 
 
 let rec map f t =
