@@ -79,6 +79,14 @@ let rec fold f a t =
   
 let sumTree t = fold (fun acc x -> acc + x) 0.0 t
 
+let minTree t =
+  let min y x =
+    match y with
+    | None -> Some x
+    | Some y -> Some (min y x)
+  fold (min) None t 
+let copyTree t = fold (fun acc x -> insert x acc) Empty t
+
 
 [<EntryPoint>]
 let main args =
@@ -92,6 +100,8 @@ let main args =
   printf "original tree %A\n" tr
   printf "maping tree (i + 2): %A\n" (mapTree tr)
   printf "sum tree : %A\n" (sumTree tr)
+  printf "min in tree: %A\n" (minTree tr)
+  printf "copy of tree: %A" (copyTree tr)
   printf "\n"
   
   0
