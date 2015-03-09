@@ -84,7 +84,7 @@ let minTree t =
     match y with
     | None -> Some x
     | Some y -> Some (min y x)
-  fold (min) None t 
+  fold min None t 
 let copyTree t = fold (fun acc x -> insert x acc) Empty t
 
 
