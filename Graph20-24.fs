@@ -10,15 +10,12 @@ type IGraph =
     abstract Edge : int -> int -> bool
     end
   
-type IGraph2<'A> = 
+// 25. Интерфейс полиморфного помеченного графа 
+type IMarkGraph<'A> = 
   interface
     inherit IGraph
     abstract Val  : int -> 'A
-    abstract PolyEdge : 'A -> 'A -> bool
   end
-  
-
-
   
 type GraphMatrix(array: bool [,]) =
   class
