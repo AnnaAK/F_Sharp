@@ -3,11 +3,22 @@
  Expected time: 5
  Real time: 4,5
 *)
+
 type IGraph =
   interface
     abstract Number : int
     abstract Edge : int -> int -> bool
     end
+  
+type IGraph2<'A> = 
+  interface
+    inherit IGraph
+    abstract Val  : int -> 'A
+    abstract PolyEdge : 'A -> 'A -> bool
+  end
+  
+
+
   
 type GraphMatrix(array: bool [,]) =
   class
@@ -70,9 +81,6 @@ let NodeFrom (graph: IGraph, v) =
   list
 
     
-    
-      
-  
 [<EntryPoint>]         
 let main argv = 
     let array = Array2D.create 4 4 false 
@@ -96,3 +104,9 @@ let main argv =
     printfn "3 connect with: \n" 
     printfn "Graph with matrix : %A, \nGraph adjacency list : %A"
          (NodeTo (graphA, 3))  (NodeTo (graphL, 3))
+         
+    printfn "0 access from: \n" 
+    printfn "Graph with matrix : %A, \nGraph adjacency list : %A"
+         (NodeFrom (graphA, 0))  (NodeFrom (graphL, 0))
+         
+    0 
