@@ -81,14 +81,14 @@ let NodeFrom (graph: IGraph, v) =
 [<EntryPoint>]         
 let main argv = 
     let array = Array2D.create 4 4 false 
-    Array2D.set array 0 1 true
-    Array2D.set array 0 3 true
-    Array2D.set array 1 2  true
-    Array2D.set array 2 3 true
+    Array2D.set array 0 2 true
+    Array2D.set array 1 0  true
+    Array2D.set array 1 3 true
+    Array2D.set array 2 0 true
     Array2D.set array 3 2 true
     
 
-    let list = [| [ 1; 2]; [4]; [4]; [0;2]; [2] |]
+    let list = [|[2]; [0;3]; [0]; [2] |]
     printfn " Graph with matrix: %A\n" array
     printfn " Graph adjacency list: %A\n" list
 
@@ -98,9 +98,9 @@ let main argv =
     let graphList = new GraphAdjacencyList(list) 
     let graphL = graphList  :> IGraph 
     
-    printfn "3 connect with: \n" 
+    printfn "0 connect with: \n" 
     printfn "Graph with matrix : %A, \nGraph adjacency list : %A"
-         (NodeTo (graphA, 3))  (NodeTo (graphL, 3))
+         (NodeTo (graphA, 0))  (NodeTo (graphL, 0))
          
     printfn "0 access from: \n" 
     printfn "Graph with matrix : %A, \nGraph adjacency list : %A"
