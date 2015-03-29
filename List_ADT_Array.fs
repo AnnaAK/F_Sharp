@@ -3,7 +3,6 @@
   Expected time: 5 hours
   Real time: 20 hours
  *)
- 
 type IList<'A> =
     interface
       abstract Length : int with get,set
@@ -110,7 +109,7 @@ type List<'A when 'A: equality> () =
                 printfn "%A\n" this.Val
     end  
     
-    type List_array<'A when 'A: equality> () =
+type List_array<'A when 'A: equality> () =
     class
         let mutable list = [||]
         member this.Val  
@@ -123,6 +122,12 @@ type List<'A when 'A: equality> () =
                 this.Val <- Array.append [|x|] this.Val
             member this.AddEnd x = 
                 this.Val <- Array.append this.Val [|x|]
+            member this.AddNumber x i =
+                let mas = this.Val
+                let n = (this:> IList<'A>).Length
+                if  n < i  then failwith "such index doesn't exist"
+                else let t = Array.append (Array.sub mas 0 i) [|x|] 
+                     this.Val <- Array.append t (Array.sub mas i (n - i ))
             member this.RemBegin () =
                 let mas = this.Val
                 let n = (this:> IList<'A>).Length
@@ -134,6 +139,21 @@ type List<'A when 'A: equality> () =
                 match this.Val with
                 | [| |] -> failwith "list is empty"
                 |  _   -> this.Val <- Array.sub this.Val 0  (n- 1)
+            member this.RemNumber i = 
+                let mas = this.Val
+                let n =  (this:> IList<'A>).Length
+                if  n < i then failwith "index doesn't exist"
+                else 
+                    this.Val <- Array.append 
+                                (Array.sub mas 0 i) (Array.sub mas (i + 1) (n - i - 1))
+            member this.Search func =
+                let n = (this:> IList<'A>).Length
+                let rec find i n =
+                  if i = n then None
+                  elif func (this.Val.[i]) then Some (this.Val.[i])
+                  else find (i + 1) n
+                find 0 n
+                    
             member this.Head () =
                 match this.Val with
                 | [||] -> None
@@ -154,7 +174,6 @@ type List<'A when 'A: equality> () =
             member this.Print () = 
                 printfn "%A\n" this.Val
     end      
-
 
 [<EntryPoint>]
 let main argv = 
@@ -203,12 +222,19 @@ let main argv =
     printfn "Add 5 to the end:"
     arr.AddEnd 5
     arr.Print ()
+    printfn "Add 6 to 4th place:"
+    ignore (arr.AddNumber 6 4)
+    arr.Print ()
     printfn "Remove head:"
     ignore (arr.RemBegin ())
     arr.Print ()
     printfn "Remove end:"
     ignore (arr.RemEnd () )
     arr.Print ()
+    printfn "Remove second elem"
+    ignore (arr.RemNumber 2 )
+    arr.Print ()
+    printfn "Find 9: %A" (arr.Search (fun x -> x = 9))
     let array2= new List_array<int> ()
     array2.Val <- [| 1; 3; 6; 7|]
     let arr2 = array2:> IList<int>
@@ -217,6 +243,7 @@ let main argv =
     printfn "Concat:"
     arr.Concat arr2
     arr.Print ()
-  0
-    
- 
+
+
+
+    0
