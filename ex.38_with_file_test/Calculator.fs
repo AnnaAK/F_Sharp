@@ -42,7 +42,7 @@ let Calculator (in_string: string) =
   let mutable tokens_n = []
   
   for i = 0 to in_string.Length - 1 do
-    if  (in_string.[i] = '-') && (i <> in_string.Length) then
+    if  (in_string.[i] = '-') && (i <> (in_string.Length - 1)) then
                                    if (System.Char.IsDigit (in_string.[i + 1]))  then number <-  number + in_string.[i].ToString()
                                    else  number <-  number + in_string.[i].ToString() 
                                          tokens_n <- List.append tokens_n [number;]
