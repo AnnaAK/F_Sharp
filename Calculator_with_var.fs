@@ -135,20 +135,45 @@ let convert (in_string : string, var: string) =
 
 let Calc_tree (in_string: string) =
   let calc = new Stack<Tree<string>> ()
+  let mutable number = ""
+  let mutable tokens_n = []
+  
+  for i = 0 to in_string.Length - 1 do
+    if  (in_string.[i] = '-') && (i <> (in_string.Length - 1)) then
+                                   if (System.Char.IsDigit (in_string.[i + 1]))  then number <-  number + in_string.[i].ToString()
+                                   else  number <-  number + in_string.[i].ToString() 
+                                         tokens_n <- List.append tokens_n [number;]
+                                         number <- ""
+                                                                                        
+    elif (in_string.[i] = '+') || (in_string.[i] = '-') || (in_string.[i] = '*') || 
+         (in_string.[i] = '/') || (in_string.[i] = '%') || (in_string.[i] = '^') then
+                                  number <-  number + in_string.[i].ToString() 
+                                  tokens_n <- List.append tokens_n [number;]
+                                  number <- ""
+    elif in_string.[i] <> ' '  then
+                                    number <-  number + in_string.[i].ToString() 
+                                   
+    else tokens_n <- List.append tokens_n [number;]
+         number <- ""
+
+  let in_string = List.filter (fun x -> x <> "" ) tokens_n
+
+  let calc = new Stack<Tree<string>> ()
   for i = 0 to in_string.Length - 1 do
     let v = in_string.[i]
     
-    if System.Char.IsDigit(v) then 
+    if  System.Char.IsNumber(v, 0) then 
                                    calc.push(Num(Convert.ToInt32(v.ToString(), 10)))
                                    
                                    
-    elif  (v <> ' ') && (not calc.Empty) then 
+    elif (not calc.Empty) then 
                                               let a = calc.head
                                               ignore (calc.pop)
                                               if (not calc.Empty) then
                                                                       let b = calc.head
                                                                       ignore (calc.pop)
                                                                       calc.push(Op (v.ToString(), b, a))
+                              
                                                                       
   let result = calc.head
   ignore(calc.pop) 
@@ -176,7 +201,7 @@ let Calc (in_string: Tree<'A>) =
                                         | 0 -> 1
                                         | 1 -> e
                                         | s -> e * (pow e (s - 1))
-                                      pow b (a)
+                                      pow a b
                               | _ -> failwith "incorect"
     
   calc in_string
@@ -196,6 +221,9 @@ let calculator (in_string: string, var:string) =
 [<TestCase ("7 * (8 - x)", "0", Result = 56)>]
 [<TestCase ("(5 - x) / 2","1", Result = 2)>]
 [<TestCase ("(1 + 1 + 1 + 1 + 1 + 1 + 1 + 2) * x", "7", Result = 63)>]
+[<TestCase ("11 ^ 1 ^ x","999", Result = 11)>]
+[<TestCase ("x ^ 2 + 68","2", Result = 72)>]
+[<TestCase ("x + x","4", Result = 8)>]
 let ``Tests for calculator`` in_string var =
     calculator (in_string, var) 
   
@@ -206,10 +234,6 @@ let ``Tests for calculator`` in_string var =
 
 [<EntryPoint>]
 let main argv =
-  let in_string = "1 + x" 
-  let var = "7"
-  let out_string = calculator (in_string, var)
-  printf "%A\n" out_string
 
   0
          
