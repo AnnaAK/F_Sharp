@@ -41,7 +41,7 @@ let Calculator (in_string: string) =
   let mutable tokens_n = []
   
   for i = 0 to in_string.Length - 1 do
-    if  (in_string.[i] = '-') && (i <> in_string.Length) then
+    if  (in_string.[i] = '-') && (i <> (in_string.Length - 1)) then
                                    if (System.Char.IsDigit (in_string.[i + 1]))  then number <-  number + in_string.[i].ToString()
                                    else  number <-  number + in_string.[i].ToString() 
                                          tokens_n <- List.append tokens_n [number;]
@@ -111,6 +111,8 @@ let Calculator (in_string: string) =
 [<TestCase ("3 4 2 * 1 5 - 2 ^ / +", Result = "3")>]
 [<TestCase ("1005 1 ^ ", Result = "1005")>]
 [<TestCase ("2 -3 ^", Result = "0")>]
+[<TestCase ("3 1 2 ^ ^", Result = "3")>]
+[<TestCase ("1 2 - 3 -", Result = "-4")>]
 let ``Tests for calculator`` in_string =
     Calculator in_string 
 
