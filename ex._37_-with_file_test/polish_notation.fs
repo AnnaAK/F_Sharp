@@ -113,13 +113,13 @@ let convert (in_string : string) =
      
 [<EntryPoint>]
 let main argv =
-  // здесь должен быть путь до файла с тестом
-  let pathRead = @"D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw05_02\MyTest.txt" 
+  
+  let pathRead = "MyTest.txt" 
   use stream = new StreamReader(pathRead)
   let in_string = stream.ReadLine()
   let out_string = convert (in_string)
-  // здесь должен быть путь до файла с результатом
-  let pathWrite = @"D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw05_02\Result.txt"
+  
+  let pathWrite = "Result.txt"
   use stream2 = new StreamWriter(pathWrite)
   for i = 0 to out_string.Length - 1 do
       stream2.WriteLine (out_string.[i])
