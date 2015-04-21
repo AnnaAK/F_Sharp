@@ -1,6 +1,5 @@
 ﻿module test41_1
 
-open ex41
 open NUnit.Framework
 
 [<Test>] // проверяет работу fold, Bind, Return
