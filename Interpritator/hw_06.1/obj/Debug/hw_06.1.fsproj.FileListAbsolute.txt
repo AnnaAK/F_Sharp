@@ -1,0 +1,11 @@
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\hw_06.1.exe.config
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\hw_06.1.XML
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\hw_06.1.exe
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\hw_06.1.pdb
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\FSharp.Core.dll
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\FSharp.Core.xml
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\ru\FSharp.Core.resources.dll
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\obj\Debug\hw_06.1.exe
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\obj\Debug\hw_06.1.pdb
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\nunit.framework.dll
+D:\Мои документы\proj\Visual Studio\ConsoleApplication1\hw_06.1\bin\Debug\nunit.framework.xml

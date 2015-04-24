@@ -1,0 +1,15 @@
+;
+read
+a
+;
+read
+b
+;
+:=
+n
++
+a
+b
+;
+write
+n
