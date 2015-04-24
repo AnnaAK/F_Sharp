@@ -1,6 +1,7 @@
 ﻿module test_other_radix
-open NUnit.Framework
 open other_radix
+open NUnit.Framework
+
 
 // перевод в шестнадцатиричную
 [<TestCase ("12", Result = "C")>] // проверка правильности перевода в буквы
