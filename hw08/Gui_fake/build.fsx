@@ -5,7 +5,7 @@ open Fake
 RestorePackages()
 
 let buildDir = "./build/"
-let testDir  = "./tests/"
+let testDir  = "./test/"
 
 Target "Clean" (fun _ ->
   CleanDirs [buildDir;  testDir]
@@ -19,7 +19,7 @@ Target "BuildApp" (fun _ ->
 
 
 Target "BuildTest" (fun _ ->
-  !! "src/tests/**/*.fsproj"
+  !! "src/test/**/*.fsproj"
     |> MSBuildDebug testDir "Build"
     |> Log "BuildTest-Output: "
 )
