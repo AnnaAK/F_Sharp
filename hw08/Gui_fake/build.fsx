@@ -19,7 +19,7 @@ Target "BuildApp" (fun _ ->
 
 
 Target "BuildTest" (fun _ ->
-  !! "src/test/**/*.fsproj"
+  !! "src/tests/**/*.fsproj"
     |> MSBuildDebug testDir "Build"
     |> Log "BuildTest-Output: "
 )
