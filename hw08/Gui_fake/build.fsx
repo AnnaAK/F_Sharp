@@ -5,11 +5,10 @@ open Fake
 RestorePackages()
 
 let buildDir = "./build/"
-let guiDir = "./gui/"
-let testDir  = "./test/"
+let testDir  = "./tests/"
 
 Target "Clean" (fun _ ->
-  CleanDirs [buildDir; guiDir; testDir]
+  CleanDirs [buildDir;  testDir]
 )
 
 Target "BuildApp" (fun _ ->
@@ -18,14 +17,9 @@ Target "BuildApp" (fun _ ->
     |> Log "AppBuild-Output: "
 )
 
-Target "BuildGUI" (fun _ ->
-  !! "src/gui/**/*.fsproj"
-    |> MSBuildRelease guiDir "Build"
-    |> Log "BuildGui-Output: "
-)
 
 Target "BuildTest" (fun _ ->
-  !! "src/test/**/*.fsproj"
+  !! "src/tests/**/*.fsproj"
     |> MSBuildDebug testDir "Build"
     |> Log "BuildTest-Output: "
 )
@@ -44,7 +38,6 @@ Target "Default" (fun _ ->
 
 "Clean"
   ==> "BuildApp"
-  ==> "BuildGui"
   ==> "BuildTest"
   ==> "Test"
   ==> "Default"
