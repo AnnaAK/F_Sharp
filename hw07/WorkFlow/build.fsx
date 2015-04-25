@@ -11,13 +11,13 @@ Target "Clean" (fun _ ->
 )
 
 Target "BuildApp" (fun _ ->
-    !! "src/app/**/*.fsproj"
+    !! "app/**/*.fsproj"
         |> MSBuildRelease buildDir "Build"
         |> Log "AppBuild-Output: "
 )
 
 Target "BuildTest" (fun _ ->
-    !! "src/test/**/*.fsproj"
+    !! "test/**/*.fsproj"
         |> MSBuildDebug testDir "Build"
         |> Log "BuildTest-Output: "
 )
