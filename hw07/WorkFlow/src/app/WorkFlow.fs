@@ -1,4 +1,4 @@
-﻿module Program
+﻿module WorkFlow
 open System
 
 // ex. 40
@@ -64,4 +64,11 @@ let concatTree t1 t2 =
     yield t2
     
   }
+
+[<EntryPoint>]
+let main argv =
+   let tree = Node(7, Node(10, Empty, Empty), Empty)
+   let res = mapTree( fun x -> x * 3) tree
+   printf "%A\n" res
+   0
 

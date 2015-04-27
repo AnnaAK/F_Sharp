@@ -5,12 +5,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>fc2a9e7a-de63-47b2-b548-36003f7a9b40</ProjectGuid>
+    <ProjectGuid>80c5cddd-682a-405f-9251-4625bc83f39c</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>test</RootNamespace>
-    <AssemblyName>test</AssemblyName>
+    <RootNamespace>app</RootNamespace>
+    <AssemblyName>app</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>test</Name>
+    <Name>app</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\test.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\app.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\test.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\app.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.fs" />
+    <Compile Include="WorkFlow.fs" />
     <None Include="App.config" />
   </ItemGroup>
   <PropertyGroup>
