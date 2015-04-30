@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D34C0B77-9617-4F50-AC3F-7640F78D9750}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{DE51EE32-84F5-44A3-A57A-4DEE58064C44}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "app", "src\app\app.fsproj", "{0AA5817C-031A-487A-B8D6-50B06735ABA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0B480F7E-4E1B-4167-85C9-B6DEEA754C37}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "test", "src\test\test.fsproj", "{C40E58B6-325D-4800-8881-9F436F1B2A6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AA5817C-031A-487A-B8D6-50B06735ABA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA5817C-031A-487A-B8D6-50B06735ABA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA5817C-031A-487A-B8D6-50B06735ABA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA5817C-031A-487A-B8D6-50B06735ABA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C40E58B6-325D-4800-8881-9F436F1B2A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40E58B6-325D-4800-8881-9F436F1B2A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40E58B6-325D-4800-8881-9F436F1B2A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40E58B6-325D-4800-8881-9F436F1B2A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE51EE32-84F5-44A3-A57A-4DEE58064C44} = {D34C0B77-9617-4F50-AC3F-7640F78D9750}
+		{0B480F7E-4E1B-4167-85C9-B6DEEA754C37} = {D34C0B77-9617-4F50-AC3F-7640F78D9750}
+		{0AA5817C-031A-487A-B8D6-50B06735ABA0} = {DE51EE32-84F5-44A3-A57A-4DEE58064C44}
+		{C40E58B6-325D-4800-8881-9F436F1B2A6E} = {0B480F7E-4E1B-4167-85C9-B6DEEA754C37}
+	EndGlobalSection
+EndGlobal
