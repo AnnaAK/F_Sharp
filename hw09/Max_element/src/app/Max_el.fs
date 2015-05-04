@@ -3,23 +3,30 @@ open System.Threading
 open System.Diagnostics
 
 let max_el (ls : int list) l r : int =
-  let mutable res = ls.[0]
+  let mutable res = ls.[l]
   for i in l .. r do
     if ls.[i] > res then res <- ls.[i]
-    printf "%A\n" ls.[i]
   res
 
 let max_t  (list : int list) threadNumber  =
   let lst = list
   let size = lst.Length 
-  let res = ref -2147483648
+  let res = ref  System.Int32.MinValue
   let step = size / threadNumber
-  let threadList = List.init threadNumber (fun i ->
+  let mutable threadList = List.init (threadNumber - 1) (fun i ->
       new Thread(ThreadStart(fun _ ->
+          Monitor.Enter(res)
           let threadRes = max_el lst (i * step) ((i+1) * step - 1)
           if threadRes > res.Value then res:= threadRes
+          Monitor.Exit(res)
         ))
     )
+  threadList <- List.append threadList  [new Thread(ThreadStart(fun _ ->
+          Monitor.Enter(res)
+          let threadRes = max_el lst ((threadNumber - 1) * step) (lst.Length - 1)
+          res := max res.Value threadRes
+          Monitor.Exit(res)
+        )) ]
   for t in threadList do
     t.Start()
   for t in threadList do
@@ -27,7 +34,7 @@ let max_t  (list : int list) threadNumber  =
   
   res.Value
 
-let diagnostic t l =
+let diagnostic l t =
   let timer = new Stopwatch()
   timer.Start()
   let returnValue = max_t l t
@@ -37,3 +44,11 @@ let diagnostic t l =
 
 
 
+[<EntryPoint>]
+let main argv = 
+    let n = 10000
+    let rnd = System.Random(0)
+    let lst = List.init n ( fun _ -> rnd.Next ())
+    printfn "%d" (diagnostic lst 3 )
+   
+    0 

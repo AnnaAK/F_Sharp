@@ -48,8 +48,9 @@ let diagnostic t (a: int [,]) (b: int [,]) =
 
 [<EntryPoint>]
 let main argv =
-  let array1 = array2D [ [ 1; 2]; [5; 4] ]
-  let array2 = array2D [ [ 2]; [-5]]
-  let res = multi 2 array1 array2
-  printfn "%A" res
+  let size = 10
+  let a = Array2D.init 100 100 (fun i j -> 2)
+  let b = Array2D.init 100 100 (fun i j -> 4)
+  let res = diagnostic 50 a b
+  printf "%A\n" res
   0
